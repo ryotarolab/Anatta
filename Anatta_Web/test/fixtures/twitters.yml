@@ -1,0 +1,26 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  id: 1
+  account_id: 1
+  tweet_id: 1
+  oauth_token: MyString
+  oauth_verifier: MyString
+  last_tw_id: 1
+
+two:
+  id: 2
+  account_id: 2
+  tweet_id: 2
+  oauth_token: MyString
+  oauth_verifier: MyString
+  last_tw_id: 1
+
+anatta_test_bot:
+  id: 3
+  account_id: 5
+  oauth_token: MyString
+  oauth_verifier: MyString
+  last_tw_id: 1
+  oauth_token: <%= AppConfig[:twitter_test_bot_oauth_token] %>
+  oauth_verifier: <%= AppConfig[:twitter_test_bot_oauth_verifier] %>

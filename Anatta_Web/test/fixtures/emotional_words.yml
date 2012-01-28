@@ -1,0 +1,25 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  word: MyString
+  reading: MyString
+  pos: 1
+  semantic_orientation: 9.99
+
+two:
+  word: MyString
+  reading: MyString
+  pos: 1
+  semantic_orientation: 9.99
+
+overtop:
+  word: '優れる'
+  reading: 'すぐれる'
+  pos: 10
+  semantic_orientation: 1.0
+
+good:
+  word: '良い'
+  reading: 'よい'
+  pos: 1
+  semantic_orientation: 0.999995

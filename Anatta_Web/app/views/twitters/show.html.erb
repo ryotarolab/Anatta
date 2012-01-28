@@ -1,0 +1,64 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>
+  <%= @twitter.account.login %>さんのtwitter情報
+  </b>
+</p>
+
+<% unless @favorite_phrase.nil? %>
+  <p>
+    <b>口癖解析結果</b>
+  </p>
+
+  <table>
+    <tr>
+      <th>順位</th>
+      <th>単語</th>
+    </tr>
+    <% @favorite_phrase.each_with_index do |(word, count), index| %>
+      <% break if index >= 10 %>
+      <tr>
+        <td><%= index + 1 %></td>
+        <td><%= word %></td>
+      </tr>
+    <% end %>
+  </table>
+<% end %>
+
+<p>
+  <b>あなたのつぶやき</b>
+</p>
+感情値分析は2012/01/04以降に当サイトにダウンロードされたつぶやきに対してのみ実行されます。</br>
+つぶやきのダウンロードは<%= link_to 'ここ', avatar_path(@twitter.account.avatar) %>から
+<div id="timeline">
+  <dl>
+    <% for tweet in @tweets do %>
+      <div id="tweet">
+	<div id="tw_image">
+          <dt><%= image_tag tweet.tw_image_url, {:width => 40, :height => 40} if tweet.tw_image_url %></dt>
+	</div>
+	<% if tweet.emotion > 0.1 %>
+          <div id="positive_tw_str">
+            <dd><%= tweet.tw_str %></dd>
+            <dd>感情値<%= tweet.emotion %> ポジティブなつぶやきです。</dd>
+	  </div>
+	<% elsif tweet.emotion < -0.1 %>
+          <div id="negative_tw_str">
+            <dd><%= tweet.tw_str %></dd>
+            <dd>感情値<%= tweet.emotion %> ネガティブなつぶやきです。</dd>
+	  </div>
+	<% else %>
+          <div id="tw_str">
+            <dd><%= tweet.tw_str %></dd>
+            <dd>感情値<%= tweet.emotion %> いたって普通なつぶやきです。</dd>
+	  </div>
+	<% end %>
+      </div>
+    <% end %>
+  </dl>
+</div>
+
+
+<%= link_to 'Edit', edit_twitter_path(@twitter) %> |
+<%= link_to 'Back', twitters_path %>
