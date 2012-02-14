@@ -20,7 +20,7 @@ class AvatarTweetsController < ApplicationController
   # GET /avatar_tweets/1.xml
   def show
     @avatar_tweet = AvatarTweet.find(params[:id])
-
+    
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @avatar_tweet }

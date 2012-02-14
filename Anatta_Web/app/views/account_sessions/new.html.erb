@@ -1,7 +1,8 @@
-<h1>ログイン</h1>
 <p id="notice"><%= notice %></p>
 
 <% form_for @account_session, :url => account_session_path do |f| %>
+  <div id=new_login>
+  <h1>ログイン</h1>
   <p>
     <%= f.label :login %><br />
     <%= f.text_field :login %>
@@ -16,4 +17,13 @@
 
  <p>
    <%= link_to '新規登録', new_account_path %>
+ </p>
+</div>
+
+
+<div id = about_anatta >
+    <p class = about_head>About anatta...</p>
+    <p> あなただけのbotをつくろう！Anattaはあなたのlifelogで育ちます。</p>
+</div>
+
 <% end %>

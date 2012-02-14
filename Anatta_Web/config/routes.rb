@@ -26,6 +26,8 @@ WhoAreYou::Application.routes.draw do
   get "index/index"
   post "index/oauth"
   get "index/callback"
+  
+  get "avatars/uploadimg"
 
 =begin
 ActionController::Routing::Routes.draw do |map|

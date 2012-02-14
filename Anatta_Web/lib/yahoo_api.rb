@@ -17,7 +17,7 @@ module YahooApi
 
       open(url) do |fp|
         fp.each do |line|
-          result += line
+          result << line
         end
       end
       return result

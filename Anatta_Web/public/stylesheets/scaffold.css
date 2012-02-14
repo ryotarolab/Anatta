@@ -1,4 +1,17 @@
-body { background-color: #fff; color: #333; }
+body {
+    /*
+    background: -webkit-gradient(linear, left top, right bottom, from(#C0C0C0),color-stop(50%,#fff), to(#C0C0C0));
+    */
+   /*
+    background: -webkit-gradient(linear, left top, right bottom, from(#FFFFFF),color-stop(2%,#F00),
+    color-stop(4%,#FF0),color-stop(6%,#0F0),color-stop(8%,#00F),color-stop(10%,#FFF),
+    color-stop(90%,#FFF),color-stop(92%,#00F),color-stop(94%,#0F0),color-stop(96%,#FF0),color-stop(98%,#F00),
+     to(#FFFFFF));
+    */
+    background:#F5F5F5;
+    color: #333;
+    height:100%;
+}
 
 body, p, ol, ul, td {
   font-family: verdana, arial, helvetica, sans-serif;
@@ -29,7 +42,6 @@ div.field, div.actions {
   background-color: red;
   display: table;
 }
-
 #error_explanation {
   width: 450px;
   border: 2px solid red;
@@ -54,19 +66,92 @@ div.field, div.actions {
   font-size: 12px;
   list-style: square;
 }
+
+#header{
+    background-color:black;
+    opacity:0.8;
+    color:white;
+    display:inline-block;
+    width:100%;
+    /* background: -webkit-gradient(linear, left top, right bottom, from(white),color-stop(10%,red),
+    ,color-stop(20%,yellow),color-stop(30%,green),color-stop(40%,blue),color-stop(50%,white),
+    color-stop(50%,red),color-stop(60%,yellow),color-stop(70%,green),color-stop(80%,blue),
+    color-stop(90%,white), to(red));
+     */
+}
+#header_title{
+    padding:5px 20px; 
+    float:left;
+}
+#global_nav{
+    color:white;
+    padding:5px 20px;
+    text-align:right;
+}
+#global_nav li a{
+    border-left:none;
+    margin-left:1px;
+    margin-right:1px;
+    outline:none;
+}
+#co_body{
+    background-color:#FFFFFF;
+    opacity:0.9;
+    margin : 1% 8%;
+    height:100%;
+}
+
+#main_body{
+    margin:1% 5%;
+}
+
+#about_anatta{
+    font-style : italic;
+    font-size : large;
+    border:1px solid grey;
+    margin:10px 0;
+    padding:10px;
+    border-radius:1em;
+}
+
+.about_head{
+    font-style : normal;
+    font-size:larger;
+    font-weight:bold;
+}
+
+#new_login{
+    text-align : right;
+    border:1px solid grey;
+    padding:10px;
+    margin:10px 0;
+}
+#avator_info{
+    border:2px solid grey;
+}
+#avator_img{
+    padding:10px;
+    float:left;
+}
+#avator_prof{
+    padding:10px;
+}
 #tweet{
-  width : 740px; 
+  width : 750px; 
   height: 70px;
   border-bottom: 1px dashed;
 }
-
+#timeline{
+    align:center;
+}
 #tw_image {
   float : left;
-  width : 40px;
+  width : 60px;
+  padding : 3px;
 }
 
 #tw_str {
-  width : 700px;
+  width : 750px;
 }
 
 #positive_tw_str {

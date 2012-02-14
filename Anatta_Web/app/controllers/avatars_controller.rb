@@ -2,6 +2,7 @@
 class AvatarsController < ApplicationController
   before_filter :require_account, :only => [:show, :edit, :update, :destroy]
   before_filter :require_admin, :only => [:index]
+  require 'kconv'
 
   # GET /avatars
   # GET /avatars.xml
@@ -26,6 +27,10 @@ class AvatarsController < ApplicationController
     end
   end
 
+  #def multi
+  #  render :layout => 'avatar_prof' # avatar_prof.html.erb
+  #end
+
   # GET /avatars/new
   # GET /avatars/new.xml
   def new
@@ -44,6 +49,31 @@ class AvatarsController < ApplicationController
     @avatar = Avatar.find(params[:id])
     @accounts = [[@avatar.account.login, @avatar.account.id]]
     @sex_list = { '♂' => Avatar::MALE, '♀' => Avatar::FEMALE }
+  end
+
+  # GET /avatars/uploadimg
+  def uploadimg
+        # アップロードファイルを取得
+      file = params[:upfile] 
+        # ファイルのベース名（パスを除いた部分）を取得
+      name = file.original_filename
+        # 許可する拡張子を定義
+      perms = ['.jpg','.jpeg','.gif','.png' ]
+        # 配列permsにアップロードファイルの拡張子に合致するものがあるか
+    if !perms.include?(File.extname(name).downcase)
+      result = 'アップロードできるのは画像ファイルのみです。'
+        # アップロードfileのsizeが2MB以下であるか
+    elsif file.size > 2.megabyte
+      result = 'ファイルサイズは2MBまでです'
+    else
+        # ファイル名をUTF-8 → Shift-JISにエンコード
+      name = name.kconv(Kconv::SJIS, Kconv::UTF8)
+        # /public/doc配下にuploadd fileをsave
+      File.open("public/docs/#{name}",'wb') { |f| f.write(file.read)}
+      result = "#{name.toutf8}をアップロードしました。"
+    end
+        # saved success/error massage
+    render :text => result
   end
 
   # POST /avatars

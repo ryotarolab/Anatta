@@ -6,38 +6,43 @@
 <% end %>
 
 </br>
-<h3> アバター情報 </h3>
-<p>
-  <b>Name:</b>
-  <%= @avatar.name %>
-</p>
-
-<p>
-  <b>Birthday:</b>
-  <%= @avatar.birthday %>
-</p>
-
-<p>
-  <b>Age:</b>
-    生後<%= @age %>日
-</p>
-
-<p>
-  <b>Sex:</b>
-  <%= @avatar.sex == 0 ? '♂' : '♀' %>
-</p>
-
-<p>
-  <b>Item</b>
-  <% @avatar.items.each do |item| %>
-    <%= link_to item.name, :controller => 'items', :action => 'show', :id => item.id %>
+<div id=avator_info>
+    <div id=avator_img>
     <% if @is_new_icon %>
-      <img src="/images/new.jpg">
+     <img src="/images/new.jpg">
     <% end %>
-  <% end %>
-</p>
-
-
+    <%= image_tag(@avatar.image_url, :size=>"200x200") if @avatar.image_url %></br>
+    <% #link_to 'uploadimg', uploadimg_avatar_path(@avatar) %> 
+    </div>
+    <div id =avator_prof>
+    <h3> アバター情報 </h3>
+    <p>
+      <b>Name:</b>
+      <%= @avatar.name %>
+    </p>
+    <p>
+      <b>Birthday:</b>
+      <%= @avatar.birthday %>
+    </p>
+    <p>
+      <b>Age:</b>
+        生後<%= @age %>日
+    </p>
+    <p>
+      <b>Sex:</b>
+      <%= @avatar.sex == 0 ? '♂' : '♀' %>
+    </p>
+    <p>
+      <b>Item</b>
+      <% @avatar.items.each do |item| %>
+        <%= link_to item.name, :controller => 'items', :action => 'show', :id => item.id %>
+        <% if @is_new_icon %>
+          <img src="/images/new.jpg">
+        <% end %>
+      <% end %>
+    </p>
+    </div>
+</div>
   <%= form_tag :controller => 'twitters', :action => 'get_tweets' do |f| %>
      <%= submit_tag 'アバターにtwitter情報をダウンロードする' %>
   <% end %>
@@ -47,12 +52,8 @@
   <%= link_to 'アバターのつぶやきをみる', 
       :controller => 'avatar_twitters', :action => 'show', 
   :id => @avatar.avatar_twitter.id %> 
-  <% if @is_new_icon %>
-    <img src="/images/new.jpg">
-  <% end %>
 <% end %>
 </br>
-<%= image_tag (@avatar.image_url) if @avatar.image_url%></br>
 </br>
 </br>
 <%= link_to 'Edit', edit_avatar_path(@avatar) %> 

@@ -1,21 +1,27 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>WhoAreYou</title>
+  <title>atatta</title>
   <%= stylesheet_link_tag :all %>
   <%= javascript_include_tag :defaults %>
   <%= csrf_meta_tag %>
 </head>
 <body>
-<% if current_account %>
-  <Div Align="left">
-    <%= link_to 'My Page', account_path(current_account) %> |
-    <%= link_to 'logout', account_session_path, :method => :delete %>
-  </Div>
-<% end %>
-<h1>Who Are You</h1>
-
+    <div id=header>
+    <h1 id=header_title>anatta</h1>
+    <% if current_account %>
+     <div id=global_nav >
+       <ul id =global_action>
+           <%= link_to 'My Page', account_path(current_account) %> | 
+           <%= link_to 'logout', account_session_path, :method =>:delete %>| 
+       </ul>
+    </div>
+    <% end %>
+    </div>
+<div id =co_body>
+<div id=main_body>
 <%= yield %>
-
+</div>
+</div>
 </body>
 </html>
